@@ -72,17 +72,17 @@ To ensure responsible data sharing:
 Superstore-SQL-Analytics-Project/
 ├── README.md
 ├── sql/
-│   ├── v_export_for_bi.sql
-│   ├── v_monthly_kpis.sql
-│   ├── v_topn_per_segment.sql
-│   ├── v_cohort_retention.sql
-│   └── v_anomaly_flags.sql
-├── screenshots/
-│   ├── export_for_bi_view.png
-│   ├── monthly_kpis_results.png
-│   ├── top_products_ranking.png
-│   ├── cohort_retention_table.png
-│   └── anomaly_flags_output.png
+│ ├── v_export_for_bi.sql
+│ ├── v_monthly_kpis.sql
+│ ├── v_topn_per_segment.sql
+│ ├── v_cohort_retention.sql
+│ └── v_anomaly_flags.sql
+└── screenshots/
+├── export_for_bi_view.png
+├── monthly_kpis_results.png
+├── top_products_ranking.png
+├── cohort_retention_table.png
+└── anomaly_flags_output.png
 
 
 ---
