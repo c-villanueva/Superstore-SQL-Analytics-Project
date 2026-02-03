@@ -69,7 +69,7 @@ To ensure responsible data sharing:
 ---
 
 ## Repository Structure
-superstore-sql-analytics/
+Superstore-SQL-Analytics-Project/
 ├── README.md
 ├── sql/
 │ ├── v_export_for_bi.sql
