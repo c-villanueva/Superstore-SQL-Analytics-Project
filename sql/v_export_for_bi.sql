@@ -1,0 +1,32 @@
+CREATE VIEW v_export_for_bi AS
+SELECT
+    b.row_id,
+    b.order_id,
+    b.order_date,
+    b.ship_date,
+    b.ship_mode,
+    b.customer_id,
+    b.customer_name,
+    b.segment,
+    b.city,
+    b.state,
+    b.country,
+    b.postal_code,
+    b.market,
+    b.region,
+    b.product_id,
+    b.category,
+    b.sub_category,
+    b.product_name,
+    b.sales,
+    b.quantity,
+    b.discount,
+    b.profit,
+    b.shipping_cost,
+    b.order_priority,
+    DATE_FORMAT(b.order_date, '%Y-%m-01') AS order_month,
+    YEAR(b.order_date) AS order_year,
+    MONTH(b.order_date) AS order_month_num,
+    (CASE WHEN r.returned = 'Yes' THEN 1 ELSE 0 END) AS is_returned
+FROM orders b
+LEFT JOIN returns r ON b.order_id = r.order_id;
