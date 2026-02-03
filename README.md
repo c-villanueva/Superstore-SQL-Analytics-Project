@@ -69,6 +69,7 @@ To ensure responsible data sharing:
 ---
 
 ## Repository Structure
+```
 Superstore-SQL-Analytics-Project/
 ├── README.md
 ├── sql/
@@ -83,7 +84,7 @@ Superstore-SQL-Analytics-Project/
 ├── top_products_ranking.png
 ├── cohort_retention_table.png
 └── anomaly_flags_output.png
-
+```
 
 ---
 
