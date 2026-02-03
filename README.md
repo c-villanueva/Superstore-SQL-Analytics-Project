@@ -1,17 +1,16 @@
 # 📊 Superstore SQL Analytics Portfolio Project
 
 ## Overview
-This project demonstrates end-to-end SQL analytics using a **public retail dataset**.  
-The goal is to transform raw transactional data into **business-ready insights** by designing
-a semantic layer, defining KPIs, and performing advanced analytical techniques such as
-cohort analysis, ranking, and anomaly detection.
+This project showcases **end-to-end SQL analytics** using a public retail dataset.  
+It focuses on transforming raw transactional data into **business-ready insights**
+through a well-designed semantic layer, KPI engineering, and advanced analytical queries.
 
-The database is structured to support **BI tools and executive reporting**, following
-real-world analytics engineering practices.
+The project is structured to mirror **real-world BI and analytics workflows**, where
+SQL is used not only for querying but for **data modeling, metric definition, and insight generation**.
 
 ---
 
-## Business Questions Answered
+## Business Questions Addressed
 - How do sales, profit, and customer activity trend over time?
 - Which products perform best by segment, category, and region?
 - How well do customers retain after their first purchase?
@@ -19,37 +18,83 @@ real-world analytics engineering practices.
 
 ---
 
-## Data Model & Design
-Instead of querying raw tables directly, this project creates a **BI-ready semantic layer**
-using SQL views:
+## Data Model & Design Approach
+Rather than querying raw tables directly, this project builds a **BI-ready semantic layer**
+using SQL views.
 
-- `v_export_for_bi` – Consolidated analytical base view
-- `v_monthly_kpis` – Monthly performance metrics
-- `v_topn_per_segment` – Top-performing products by segment
-- `v_cohort_retention` – Customer retention analysis
-- `v_anomaly_flags` – Monthly sales anomaly detection
+Design flow:
+Raw Tables → Consolidated Analytical View → KPIs → Insights
 
-This mirrors a real-world flow:
-> Raw tables → Semantic View → KPIs → Insights
+
+Key design principles:
+- Centralized business logic in views
+- Reusable metrics for BI tools
+- Clean, analyst-friendly data structures
 
 ---
 
-## Key Features
-- BI-ready consolidated dataset
-- Monthly KPI engineering
-- Top-N product ranking using window functions
-- Customer cohort retention analysis
-- Sales anomaly detection logic
+## Core SQL Views
+
+### `v_export_for_bi`
+A consolidated analytical base view that:
+- Joins orders, customers, products, geography, and returns
+- Standardizes date fields for time-series analysis
+- Computes derived fields such as profit margin and return flags
+
+This view serves as the **single source of truth** for downstream analysis.
+
+---
+
+### `v_monthly_kpis`
+Calculates monthly performance metrics including:
+- Orders and customers
+- Sales, profit, and units
+- Average order value
+- Profit margin
+- Return rate
+
+Built with NULL-safe logic to ensure reliable metrics.
+
+---
+
+### `v_topn_per_segment`
+Identifies **top-performing products** by:
+- Segment
+- Category
+- Region
+
+Uses window functions (`RANK() OVER`) to rank products based on total sales.
+
+---
+
+### `v_cohort_retention`
+Implements **customer cohort analysis** by:
+- Assigning customers to cohorts based on first purchase month
+- Tracking activity by month since cohort start
+- Calculating retention percentages over time
+
+This supports behavioral analysis and long-term customer value assessment.
+
+---
+
+### `v_anomaly_flags`
+Detects potential **sales anomalies** by market:
+- Flags unusually high sales as **Spikes**
+- Flags unusually low sales as **Dips**
+- Labels all other periods as **Normal**
+
+Useful for monitoring, data quality checks, and early issue detection.
 
 ---
 
 ## SQL Skills Demonstrated
 - Common Table Expressions (CTEs)
 - Window functions (`RANK() OVER`)
-- Aggregations & KPI calculations
-- NULL-safe computations
-- Date normalization and time-series analysis
-- Business logic embedded in SQL views
+- Time-series aggregation
+- Cohort and retention analysis
+- Business KPI engineering
+- NULL-safe calculations
+- Analytical data modeling using views
 
 ---
 
@@ -63,14 +108,14 @@ This mirrors a real-world flow:
 This project uses a **publicly available retail dataset**.
 
 To ensure responsible data sharing:
-- Raw data files are **not included**
-- Only SQL views, logic, and screenshots are published
+- Raw data files are not included
+- Only SQL logic and analytical views are published
 
 ---
 
 ## Repository Structure
 ```
-Superstore-SQL-Analytics-Project/
+superstore-sql-analytics/
 ├── README.md
 ├── sql/
 │ ├── v_export_for_bi.sql
@@ -78,16 +123,5 @@ Superstore-SQL-Analytics-Project/
 │ ├── v_topn_per_segment.sql
 │ ├── v_cohort_retention.sql
 │ └── v_anomaly_flags.sql
-└── screenshots/
-├── export_for_bi_view.png
-├── monthly_kpis_results.png
-├── top_products_ranking.png
-├── cohort_retention_table.png
-└── anomaly_flags_output.png
 ```
-
 ---
-
-## Notes
-This project is designed as a **SQL Data Analyst portfolio project**, focusing on
-business-driven analytics.
